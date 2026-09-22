@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Class Wall — WIN Panel · Tech1 style</title>
+  <meta name="theme-color" content="#0A0B0E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=TASA+Orbiter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar" aria-label="main navigation">
+    <div class="navbar-inner">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="win.html" style="padding:0"><h3>Class Wall · WIN</h3></a>
+      </div>
+      <div class="navbar-start">
+        <a href="index.html" class="navbar-item">Wall</a>
+        <a href="win.html" class="navbar-item">WIN Panel</a>
+        <a href="https://gyanl.com/tech1/" class="navbar-item">Tech1</a>
+      </div>
+      <div class="navbar-end">
+        <button class="theme-btn" id="theme-toggle" title="Toggle dark / light" type="button">◐</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="wrap">
+    <h5 class="meta-title centre-title">Localhost → Live · Same Firebase DB as gyanl.com/wall</h5>
+    <div class="jumbo">Class Wall — WIN Panel</div>
+    <p class="sub">Anything you paint here appears on the <b>live leaderboard</b> instantly. Tech1-style board: every tool is a card.</p>
+
+    <div id="cheat">
+      <div class="cheat-full">
+        <h2>WIN as neelabh</h2>
+        <p id="c-status">Connecting…</p>
+        <ul class="key-areas"><li>live db</li><li>writes as neelabh</li><li>guardian ready</li></ul>
+      </div>
+
+      <section class="t1-card">
+        <h5 class="meta-title">Identity</h5>
+        <h3>Who you are</h3>
+        <div class="row">
+          <label>Name <input id="c-name" value="neelabh" maxlength="20" style="width:10rem"></label>
+          <label>Colour <input id="c-colour" type="color" value="#ff00d4"></label>
+        </div>
+      </section>
+
+      <section class="t1-card">
+        <h5 class="meta-title">Takeover</h5>
+        <h3>Count &amp; claim</h3>
+        <div class="row">
+          <button id="b-count">1. Count max</button>
+          <button id="b-double" class="primary">2. Take DOUBLE of leader</button>
+          <button id="b-all" class="primary">Take ALL 576</button>
+        </div>
+      </section>
+
+      <section class="t1-card">
+        <h5 class="meta-title">Guardian</h5>
+        <h3>Stay #1</h3>
+        <div class="row">
+          <button id="b-guard-on">Start Guardian (stay #1)</button>
+          <button id="b-guard-off" disabled>Stop Guardian</button>
+        </div>
+      </section>
+
+      <section class="t1-card">
+        <h5 class="meta-title">Display &amp; Clarity</h5>
+        <h3>Zoom · local only</h3>
+        <div class="row">
+          <button id="z1" class="zoom-on">Wall: Normal</button>
+          <button id="z2">Wall: Big</button>
+          <button id="z3">Wall: Cinema</button>
+        </div>
+        <div class="row">
+          <label><input type="checkbox" id="bold-art" checked> Bold art (2px lines)</label>
+          <label><input type="checkbox" id="grid-art" checked> Grid on preview</label>
+        </div>
+        <p class="note">Live grid comes from <b>script.js</b> COLS/ROWS + <b>style.css</b> — this folder is already <b>64×36</b>.</p>
+      </section>
+
+      <section class="t1-card">
+        <h5 class="meta-title">Live pixels</h5>
+        <h3>32×18 → 64×36 HD</h3>
+        <div class="row">
+          <button id="b-hd-off" class="zoom-on">LD 32×18 live</button>
+          <button id="b-hd-on" class="primary">HD 64×36 LIVE (2304)</button>
+          <button id="b-clear-wall">🧹 Clear live wall</button>
+        </div>
+        <p class="note" id="hd-note">LD 32×18 — matches the current live site.</p>
+        <p class="note">To show HD live: upload <b>index.html, style.css, script.js, firebase-config.js</b> to <b>gyanl.com/wall/</b>, then flip HD on.</p>
+      </section>
+
+      <section class="t1-card">
+        <h5 class="meta-title">Pixel Emoji · Live</h5>
+        <h3>Emoji → wall</h3>
+        <div class="row">
+          <label>Emoji <input id="emoji-char" value="😎" style="width:4rem; font-size:1.2rem"></label>
+          <button id="emoji-pick-1">😎</button>
+          <button id="emoji-pick-2">❤️</button>
+          <button id="emoji-pick-3">🔥</button>
+          <button id="emoji-pick-4">⭐</button>
+          <button id="emoji-pick-5">😂</button>
+        </div>
+        <div class="row">
+          <button id="b-emoji" class="primary">Paint Emoji LIVE</button>
+          <select id="emoji-quality">
+            <option value="b256">256 colours (MAX)</option>
+            <option value="b64">64 colours (max detail)</option>
+            <option value="quadrants">4 colours (crisp)</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="t1-card">
+        <h5 class="meta-title">Image · Live</h5>
+        <h3>Upload → subpixels</h3>
+        <div class="row">
+          <input type="file" id="img-file" accept="image/*">
+          <select id="img-fit">
+            <option value="cover">Fill (crop)</option>
+            <option value="contain">Fit (black bars)</option>
+          </select>
+        </div>
+        <div class="row">
+          <select id="img-quality">
+            <option value="b256">256 colours (MAX stills)</option>
+            <option value="b64">64 colours (max detail)</option>
+            <option value="octants">8 colours/sq (smooth photo)</option>
+            <option value="quadrants">4 colours/sq (crisp)</option>
+          </select>
+          <button id="b-img" class="primary">Paint image LIVE</button>
+        </div>
+        <p class="note">auto-compresses to under 1MB</p>
+      </section>
+
+      <section class="t1-card">
+        <h5 class="meta-title">Video · Live</h5>
+        <h3>Upload &amp; play</h3>
+        <div class="row">
+          <input type="file" id="vid-file" accept="video/*">
+          <select id="vid-mode">
+            <option value="video">🎞️ Video: mosaic ~5fps</option>
+            <option value="slideshow">🖼️ Slideshow MAX: 256c 1fr/5s</option>
+          </select>
+        </div>
+        <div class="row">
+          <button id="b-vid-start" class="primary">▶ Play video LIVE</button>
+          <button id="b-vid-stop" disabled>⏹ Stop</button>
+          <span id="vid-hud" class="hud"></span>
+        </div>
+        <div class="row">
+          <div class="vid-progress"><div id="vid-bar"></div></div>
+          <span id="vid-time" class="mono-time"></span>
+        </div>
+        <video id="vid-el" muted playsinline style="display:none"></video>
+      </section>
+
+      <section class="t1-card">
+        <h5 class="meta-title">LED Sign · Live</h5>
+        <h3>Moving sign board</h3>
+        <div class="row">
+          <label>Text <input id="sign-text" value="LIAMS" maxlength="40" style="width:12rem"></label>
+          <label>LED <input id="sign-colour" type="color" value="#39ff14"></label>
+          <label>Speed <input id="sign-speed" type="range" min="80" max="800" value="280"></label>
+        </div>
+        <div class="row">
+          <button id="b-sign-start" class="primary">▶ Start Sign LIVE</button>
+          <button id="b-sign-stop" disabled>⏹ Stop</button>
+        </div>
+        <div class="row">
+          <label><input type="checkbox" id="sign-hd" checked> Subpixel HD (4 colours/sq)</label>
+          <button id="b-subpixel-test">🧪 Test 1 square LIVE</button>
+        </div>
+        <div class="row">
+          <canvas id="preview" width="320" height="180"></canvas>
+        </div>
+      </section>
+
+      <section class="t1-card">
+        <h5 class="meta-title">Faces · 20s</h5>
+        <h3>Expressions show</h3>
+        <div class="row">
+          <button id="b-face-start" class="primary">▶ Play Faces LIVE</button>
+          <button id="b-face-stop" disabled>⏹ Stop Faces</button>
+          <label><input type="checkbox" id="face-loop"> Loop</label>
+          <span id="face-caption" style="font-weight:700"></span>
+        </div>
+        <div class="row">
+          <div class="vid-progress"><div id="face-bar"></div></div>
+          <span id="face-time" class="mono-time">0.0s / 20s</span>
+        </div>
+      </section>
+
+      <section class="t1-card">
+        <h5 class="meta-title">Movie · 20s</h5>
+        <h3>Star Wars</h3>
+        <div class="row">
+          <button id="b-sw-start" class="primary">▶ Play Star Wars LIVE</button>
+          <button id="b-sw-stop" disabled>⏹ Stop</button>
+          <label><input type="checkbox" id="sw-loop"> Loop</label>
+          <span id="sw-caption" style="font-weight:700;color:#FFE81F"></span>
+        </div>
+        <div class="row">
+          <div class="vid-progress"><div id="sw-bar"></div></div>
+          <span id="sw-time" class="mono-time">0.0s / 20s</span>
+        </div>
+      </section>
+
+      <section class="t1-card">
+        <h5 class="meta-title">Movie · 20s</h5>
+        <h3>Fight Club</h3>
+        <div class="row">
+          <button id="b-fc-start" class="primary">▶ Play Fight Club LIVE</button>
+          <button id="b-fc-stop" disabled>⏹ Stop</button>
+          <label><input type="checkbox" id="fc-loop"> Loop</label>
+          <span id="fc-caption" style="font-weight:700;color:#ff5555"></span>
+        </div>
+        <div class="row">
+          <div class="vid-progress"><div id="fc-bar"></div></div>
+          <span id="fc-time" class="mono-time">0.0s / 20s</span>
+        </div>
+      </section>
+
+      <section class="t1-card">
+        <h5 class="meta-title">Movie · 20s</h5>
+        <h3>Barbie</h3>
+        <div class="row">
+          <button id="b-bb-start" class="primary">▶ Play Barbie LIVE</button>
+          <button id="b-bb-stop" disabled>⏹ Stop</button>
+          <label><input type="checkbox" id="bb-loop"> Loop</label>
+          <span id="bb-caption" style="font-weight:700;color:#ff69b4"></span>
+        </div>
+        <div class="row">
+          <div class="vid-progress"><div id="bb-bar"></div></div>
+          <span id="bb-time" class="mono-time">0.0s / 20s</span>
+        </div>
+      </section>
+
+      <section class="t1-card">
+        <h5 class="meta-title">Movie · 20s</h5>
+        <h3>10 Things I Hate About You</h3>
+        <div class="row">
+          <button id="b-hate-start" class="primary">▶ Play 10 Things LIVE</button>
+          <button id="b-hate-stop" disabled>⏹ Stop</button>
+          <label><input type="checkbox" id="hate-loop"> Loop</label>
+          <span id="hate-caption" style="font-weight:700;color:#4BD5EE"></span>
+        </div>
+        <div class="row">
+          <div class="vid-progress"><div id="hate-bar"></div></div>
+          <span id="hate-time" class="mono-time">0.0s / 20s</span>
+        </div>
+      </section>
+
+      <section class="t1-card">
+        <h5 class="meta-title">Game · Playable Live</h5>
+        <h3>🚀 Space Shooter (32×18)</h3>
+        <div class="row">
+          <button id="b-sh-start" class="primary">▶ Start Shooter LIVE</button>
+          <button id="b-sh-stop" disabled>⏹ Stop</button>
+          <span id="sh-hud" class="hud">score 0 • lives 3</span>
+        </div>
+        <div class="row">
+          <button id="sh-left" class="gbtn">◀</button>
+          <button id="sh-fire" class="gbtn primary">● FIRE</button>
+          <button id="sh-right" class="gbtn">▶</button>
+        </div>
+        <p class="note">Keys: ←/→ or A/D move • Space shoot.</p>
+      </section>
+
+      <section class="t1-card">
+        <h5 class="meta-title">Game · Playable Live</h5>
+        <h3>🕷️ Spiderman: Web Swing</h3>
+        <div class="row">
+          <button id="b-sp-start" class="primary">▶ Start Spidey LIVE</button>
+          <button id="b-sp-stop" disabled>⏹ Stop</button>
+          <span id="sp-hud" class="hud">dist 0m • lives 3</span>
+        </div>
+        <div class="row">
+          <button id="sp-jump" class="gbtn primary">🕸️ WEB / JUMP (hold)</button>
+        </div>
+        <p class="note">Keys: Space/↑/W = web-jump. Hold for higher.</p>
+      </section>
+
+      <div class="cheat-full t1-card">
+        <h5 class="meta-title">How this cracks the original</h5>
+        <h3>🕵️ How we crack the original wall</h3>
+        <div class="row">
+          <button id="b-how" type="button">Show / hide method</button>
+        </div>
+        <div id="how-box" hidden>
+          <p class="note"><b>1. Same open DB.</b> This panel uses the exact <b>firebase-config.js</b> as gyanl.com/wall. The Realtime Database rules allow anyone to read/write <b>wall/&lt;index&gt;</b>, so we never touch the original site — we write straight to its database.</p>
+          <p class="note"><b>2. Bypass the UI.</b> The original only lets you paint one square in your own colour. Here we call <b>set / update</b> directly on any path, with any <b>{ colour, name }</b>, so Take DOUBLE / Take ALL can claim hundreds of squares in one multi-path update.</p>
+          <p class="note"><b>3. Guardian.</b> <b>onValue(wall)</b> streams every change live. Guardian diffs names against yours every ~900ms + a 4s timer and re-paints lost squares, so you auto-reclaim #1.</p>
+          <p class="note"><b>4. Subpixels, zero server changes.</b> A square's <b>colour</b> can be a <b>conic-gradient (4 colours) / octant (8) / 64 / 256-colour</b> string. The live page assigns it to <b>style.background</b>, so gradients render on the original as-is — photos, emoji, signs and movies without changing the server.</p>
+          <p class="note"><b>5. Volume tricks.</b> Emoji/image raster to 64×36 then pack 2×2 blocks, video sends only changed squares (delta + 40MB/min budget guard), and <b>verifyLive</b> reads back <b>wall.json</b> and repairs any missing squares. That's why full pictures stick.</p>
+        </div>
+      </div>
+
+      <div class="cheat-full t1-card">
+        <h5 class="meta-title">Console</h5>
+        <h3>Log</h3>
+        <div id="log"></div>
+      </div>
+    </div>
+
+    <main class="wall-layout">
+      <div id="wall" aria-label="Live wall preview"></div>
+      <aside class="board">
+        <h5 class="meta-title">Leaderboard (Live)</h5>
+        <ol id="leaderboard"></ol>
+        <p id="status">Connecting…</p>
+      </aside>
+    </main>
+
+    <div id="copyright"><p id="copyright-notice">© Class Wall • WIN writes to LIVE • Tech1-style UI<br>Made with ❤️ by neelabh, under guidance of Gyan Lakhwani</p></div>
+  </div>
+
+  <script>
+    try {
+      const saved = localStorage.getItem("wall-theme");
+      if (saved) document.documentElement.dataset.theme = saved;
+      else if (matchMedia("(prefers-color-scheme: dark)").matches) document.documentElement.dataset.theme = "dark";
+    } catch {}
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+      const el = document.documentElement;
+      el.dataset.theme = el.dataset.theme === "dark" ? "light" : "dark";
+      try { localStorage.setItem("wall-theme", el.dataset.theme); } catch {}
+    });
+    document.getElementById("b-how")?.addEventListener("click", () => {
+      document.getElementById("how-box")?.toggleAttribute("hidden");
+    });
+  </script>
+  <script type="module" src="win.js"></script>
+</body>
+</html>
